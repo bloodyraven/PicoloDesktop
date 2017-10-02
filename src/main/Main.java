@@ -1,9 +1,14 @@
 package main;
 
+import io.IO;
+
+import java.awt.Dimension;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
+import ui.NewGamePanel;
 import bean.Joueur;
-import io.IO;
 
 public class Main {
 
@@ -13,7 +18,14 @@ public class Main {
 		joueurs.add(new Joueur("Cancan"));
 		joueurs.add(new Joueur("Yann"));
 		joueurs.add(new Joueur("Brandon"));
-		new IO(joueurs);	
+		new IO(joueurs);
+		
+		JFrame f = new JFrame("Picolo Reborn");
+		f.setSize(new Dimension(700, 450));
+		f.setContentPane(new NewGamePanel(f));
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setLocationRelativeTo(null);
+		f.setVisible(true);
 	}
 	
 }

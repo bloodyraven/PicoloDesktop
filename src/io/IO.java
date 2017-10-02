@@ -25,7 +25,7 @@ public class IO {
 				ArrayList<Joueur> cloneJoueurs = new ArrayList<Joueur>(joueurs);
 				ArrayList<Joueur> selectedJoueurs = new ArrayList<Joueur>();
 				for (int i = 0; i < nb; i++) {
-					int r  = (int) (Math.random() * joueurs.size() - 1);
+					int r  = (int) (Math.random() * (joueurs.size() - i));
 					selectedJoueurs.add(cloneJoueurs.get(r));
 					cloneJoueurs.remove(r);
 				}

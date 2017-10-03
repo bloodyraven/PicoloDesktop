@@ -1,7 +1,6 @@
 package ui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
@@ -34,10 +33,10 @@ public class NewGamePanel extends JPanel {
 		bottom.setPreferredSize(new Dimension(50, (int)(f.getHeight()*0.1)));
 		left.setPreferredSize(new Dimension((int)(f.getWidth()*0.2), 50));
 		right.setPreferredSize(new Dimension((int)(f.getWidth()*0.2), 50));
-		top.setBackground(Color.blue);
-		bottom.setBackground(Color.yellow);
-		left.setBackground(Color.green);
-		right.setBackground(Color.red);
+//		top.setBackground(Color.blue);
+//		bottom.setBackground(Color.yellow);
+//		left.setBackground(Color.green);
+//		right.setBackground(Color.red);
 		this.add(top, BorderLayout.NORTH);
 		this.add(bottom, BorderLayout.SOUTH);
 		this.add(left, BorderLayout.WEST);

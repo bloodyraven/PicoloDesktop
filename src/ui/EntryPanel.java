@@ -13,7 +13,6 @@ public class EntryPanel extends JPanel {
 	
 	JButton delete;
 	EntryPanel ep = this;
-	private String nom;
 	TextField tf;
 	
 	public EntryPanel(EntryListPanel elp) {
@@ -30,11 +29,4 @@ public class EntryPanel extends JPanel {
 		this.add(delete);
 	}
 
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
 }

@@ -8,17 +8,20 @@ public class Question {
 	private int delay;
 	private String name2;
 	private ArrayList<Joueur> joueurConcernes;
+	private String type;
 	
-	public Question(String name, ArrayList<Joueur> joueurConcernes) {
+	public Question(String name, ArrayList<Joueur> joueurConcernes, String type) {
 		this.name=name;
 		this.joueurConcernes=joueurConcernes;
+		this.setType(type);
 	}
 	
-	public Question(String name, ArrayList<Joueur> joueurConcernes, int delay, String name2) {
+	public Question(String name, ArrayList<Joueur> joueurConcernes, int delay, String name2, String type) {
 		this.name=name;
 		this.joueurConcernes=joueurConcernes;
 		this.delay=delay;
 		this.name2=name2;
+		this.setType(type);
 	}
 	
 	@Override
@@ -61,5 +64,13 @@ public class Question {
 
 	public void setName2(String name2) {
 		this.name2 = name2;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

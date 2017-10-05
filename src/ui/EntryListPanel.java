@@ -14,9 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import constants.Constants;
-import bean.Game;
 import bean.Joueur;
+import constants.Constants;
 
 @SuppressWarnings("serial")
 public class EntryListPanel extends JPanel {
@@ -57,7 +56,9 @@ public class EntryListPanel extends JPanel {
 						return;
 					}
 				}
-				new Game(f, listJoueur);
+				f.setContentPane(new FileSelectPanel(f, listJoueur));
+				f.repaint();
+				f.revalidate();
 			}
 		});
 		

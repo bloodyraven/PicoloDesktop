@@ -1,0 +1,11 @@
+#BLANK
+Tout le monde boit.
+@, raconte nous ta première fois.
+#VIRUS
+@ boit double./5/@ arrête de boire double.
+#ENUMERE
+Les races de chien. @ commence, le premier qui répète ou qui est bloqué boit 2 gorgées.
+#PREFERE
+Tu préfères baiser une chèvre ou une vache ?
+#JEU
+J'ai dans ma valise... @ commence, le premier qui répète ou qui est bloqué boit 2 gorgées.

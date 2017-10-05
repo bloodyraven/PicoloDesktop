@@ -1,4 +1,12 @@
+#BLANK
+@ et @ tuent @.
 @ mange le caca de @.
 @ boit 4 gorgées.
-Tout le monde boit.
-@ et @ tuent @.
+#VIRUS
+Virus : @ se boit triple/4/@ arrête de boire triple
+#ENUMERE
+Les poissons
+#PREFERE
+tu préfères manger ta mère ou manger ton chien ?
+#JEU
+French cancan !

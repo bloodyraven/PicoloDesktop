@@ -9,8 +9,11 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class LogoPanel extends JPanel {
+	
+	private String text;
 
-	public LogoPanel() {
+	public LogoPanel(String text) {
+		this.setText(text);
 		this.setPreferredSize(new Dimension(300, 60));
 		this.setBackground(Color.WHITE);
 	}
@@ -20,6 +23,14 @@ public class LogoPanel extends JPanel {
 		super.paint(g);
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Arial", Font.PLAIN, 35));
-		g.drawString("Picolo Reborn", 75, 40);
+		g.drawString(text, 75, 40);
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 }

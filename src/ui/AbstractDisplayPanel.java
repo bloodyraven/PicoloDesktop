@@ -3,11 +3,11 @@ package ui;
 import javax.swing.JPanel;
 
 @SuppressWarnings(value = "serial")
-public class AbstractPanel extends JPanel {
+public class AbstractDisplayPanel extends JPanel {
 	
 	private String text;
 
-	public AbstractPanel(String text) {
+	public AbstractDisplayPanel(String text) {
 		this.setText(text);
 	}
 

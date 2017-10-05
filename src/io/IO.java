@@ -64,12 +64,18 @@ public class IO {
 				String sCurrentLine;
 				while ((sCurrentLine = br.readLine()) != null) {
 					// Test catégorie
+					if(sCurrentLine.trim().equals("")) {
+						continue;
+					}
 					if(sCurrentLine.contains("#")) {
 						actualCategory = sCurrentLine.replace("#", "");
 						continue;
 					}
 					String[] splitLine = sCurrentLine.split("/");
 					int nb = StringUtils.countMatches(splitLine[0], "@");
+					if(nb>joueurList.size()) {
+						continue;
+					}
 					ArrayList<Joueur> cloneJoueurs = new ArrayList<Joueur>(joueurList);
 					ArrayList<Joueur> selectedJoueurs = new ArrayList<Joueur>();
 					for (int i = 0; i < nb; i++) {

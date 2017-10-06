@@ -2,21 +2,23 @@ package ui;
 
 import javax.swing.JPanel;
 
+import bean.Question;
+
 @SuppressWarnings(value = "serial")
 public class AbstractDisplayPanel extends JPanel {
 	
-	private String text;
+	private Question question;
 
-	public AbstractDisplayPanel(String text) {
-		this.setText(text);
+	public AbstractDisplayPanel(Question question) {
+		this.setQuestion(question);
 	}
 
-	public String getText() {
-		return text;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 	
 }

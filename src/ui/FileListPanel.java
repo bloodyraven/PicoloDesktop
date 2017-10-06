@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import constants.Constants;
+import bean.Game;
 import bean.Joueur;
 
 @SuppressWarnings("serial")
@@ -45,6 +48,12 @@ public class FileListPanel extends JPanel{
 		start.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				if(fileList.size()==0) {
+					JOptionPane.showMessageDialog(f, Constants.MSG_FILE_VIDE, "", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
+				//TODO vérifier les fichiers
+				new Game(f, listJoueur, fileList);
 			}
 		});
 		

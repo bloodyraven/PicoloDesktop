@@ -3,7 +3,7 @@
 @ mange le caca de @.
 @ boit 4 gorgées.
 #VIRUS
-Virus : @ se boit triple/4/@ arrête de boire triple
+Virus : @ boit triple/4/@ arrête de boire triple
 #ENUMERE
 Les poissons
 #PREFERE

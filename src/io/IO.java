@@ -95,7 +95,7 @@ public class IO {
 					if(!multipleText) {
 						questionList.add(new Question(splitLine[0], selectedJoueurs, actualCategory));
 					} else {
-						questionList.add(new Question(splitLine[0], selectedJoueurs, Integer.parseInt(splitLine[1]), splitLine[1], actualCategory));
+						questionList.add(new Question(splitLine[0], selectedJoueurs, Integer.parseInt(splitLine[1]), splitLine[2], actualCategory));
 					}
 				}
 			}
@@ -110,9 +110,9 @@ public class IO {
 				ex.printStackTrace();
 			}
 		}
-		for (Question q : questionList) {
-			System.out.println(q.toString());
-		}
+//		for (Question q : questionList) {
+//			System.out.println(q.toString());
+//		}
 	}
 
 	public ArrayList<Question> getQuestionList() {

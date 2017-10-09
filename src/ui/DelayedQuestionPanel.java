@@ -1,12 +1,14 @@
 package ui;
 
+import controller.FrameController;
+
 @SuppressWarnings("serial")
 public class DelayedQuestionPanel extends AbstractDisplayPanel {
 	
 	private String text;
 
-	public DelayedQuestionPanel(String text) {
-		super(null);
+	public DelayedQuestionPanel(String text, FrameController fc) {
+		super(null, fc);
 		this.setText(text);
 	}
 	

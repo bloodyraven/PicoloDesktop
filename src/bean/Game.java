@@ -9,6 +9,7 @@ import java.util.Iterator;
 
 import javax.swing.JFrame;
 
+import controller.FrameController;
 import ui.AbstractDisplayPanel;
 import ui.BlankPanel;
 import ui.DelayedQuestionPanel;
@@ -22,16 +23,22 @@ public class Game {
 	private ArrayList<Joueur> joueurList;
 	private JFrame f;
 	private ArrayList<AbstractDisplayPanel> listPanels;
+	private FrameController fc;
 	
 	public Game(JFrame f, ArrayList<Joueur> joueurList, ArrayList<File> fileList) {
 		this.joueurList=joueurList;
 		this.f=f;
 		setListPanels(new ArrayList<AbstractDisplayPanel>());
 		//LOAD ALL QUESTIONS
+		fileList.add(new File("resources/picolo_nom.txt"));
+		fileList.add(new File("resources/test.txt"));
 		IO io = new IO(joueurList, fileList);
+		//SET FIRST LAYOUT
+		fc = new FrameController(f, listPanels);
 		//GENERATE SESSION QUESTIONS
 		generatePanelList(io.getQuestionList());
-		//SET FIRST LAYOUT
+		fc.setPanels(listPanels);
+		fc.nextPanel();
 	}
 	
 	private void generatePanelList(ArrayList<Question> questionList) {
@@ -42,7 +49,7 @@ public class Game {
 			while (it.hasNext()) {
 				Question question=it.next();
 				if(question.getDelay() - 1 == 0) {
-					listPanels.add(new DelayedQuestionPanel(question.getName2()));
+					listPanels.add(new DelayedQuestionPanel(question.getName2(), fc));
 					it.remove();
 				}
 			}
@@ -57,7 +64,7 @@ public class Game {
 		}
 		if(delayedQuestions.size()>0) {
 			for (Question question : delayedQuestions) {
-				listPanels.add(new DelayedQuestionPanel(question.getName2()));
+				listPanels.add(new DelayedQuestionPanel(question.getName2(), fc));
 			}
 		}
 		int cpt = 0;
@@ -68,11 +75,11 @@ public class Game {
 	
 	private AbstractDisplayPanel getQuestionClass(Question q) {
 		switch(q.getType()) {
-			case "BLANK":return new BlankPanel(q);
-			case "VIRUS":return new VirusPanel(q);
-			case "ENUMERE":return new EnumerePanel(q);
-			case "PREFERE":return new TuPreferesPanel(q);
-			case "JEU":return new JeuPanel(q);
+			case "BLANK":return new BlankPanel(q, fc);
+			case "VIRUS":return new VirusPanel(q, fc);
+			case "ENUMERE":return new EnumerePanel(q, fc);
+			case "PREFERE":return new TuPreferesPanel(q, fc);
+			case "JEU":return new JeuPanel(q, fc);
 			default:return null;
 		}
 	}

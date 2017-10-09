@@ -48,10 +48,10 @@ public class FileListPanel extends JPanel{
 		start.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(fileList.size()==0) {
-					JOptionPane.showMessageDialog(f, Constants.MSG_FILE_VIDE, "", JOptionPane.WARNING_MESSAGE);
-					return;
-				}
+//				if(fileList.size()==0) {
+//					JOptionPane.showMessageDialog(f, Constants.MSG_FILE_VIDE, "", JOptionPane.WARNING_MESSAGE);
+//					return;
+//				}
 				//TODO vérifier les fichiers
 				new Game(f, listJoueur, fileList);
 			}

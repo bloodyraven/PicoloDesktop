@@ -15,45 +15,6 @@ public class IO {
 	
 	private ArrayList<Question> questionList;
 
-	public IO(ArrayList<Joueur> joueurs) {
-		BufferedReader br = null;
-		try {
-			questionList = new ArrayList<Question>();
-			
-			br = new BufferedReader(new FileReader("resources/test.txt"));
-			String sCurrentLine;
-			while ((sCurrentLine = br.readLine()) != null) {
-				int nb = StringUtils.countMatches(sCurrentLine, "@");
-				ArrayList<Joueur> cloneJoueurs = new ArrayList<Joueur>(joueurs);
-				ArrayList<Joueur> selectedJoueurs = new ArrayList<Joueur>();
-				for (int i = 0; i < nb; i++) {
-					int r  = (int) (Math.random() * (joueurs.size() - i));
-					selectedJoueurs.add(cloneJoueurs.get(r));
-					cloneJoueurs.remove(r);
-				}
-				for (int i = 0; i < selectedJoueurs.size(); i++) {
-					sCurrentLine = sCurrentLine.replaceFirst("@", selectedJoueurs.get(i).toString());
-				}
-				questionList.add(new Question(sCurrentLine, selectedJoueurs, ""));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (br != null)
-					br.close();
-			} catch (IOException ex) {
-
-				ex.printStackTrace();
-			}
-		}
-		
-		for (Question q : questionList) {
-			System.out.println("question = "+q.toString());
-		}
-		
-	}
-	
 	public IO(ArrayList<Joueur> joueurList, ArrayList<File> fileList) {
 		questionList = new ArrayList<Question>();
 		String actualCategory = "";

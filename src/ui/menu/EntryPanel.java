@@ -1,4 +1,4 @@
-package ui;
+package ui.menu;
 
 import java.awt.Dimension;
 import java.awt.TextField;

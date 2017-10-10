@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import ui.AbstractDisplayPanel;
-import ui.EndPanel;
+import ui.game.AbstractDisplayPanel;
+import ui.menu.EndPanel;
 
 public class FrameController {
 
@@ -20,7 +20,8 @@ public class FrameController {
 	}
 	
 	public void nextPanel() {
-		if(cpt != panels.size()) {
+		System.out.println("Panel : "+cpt+" "+panels.size()+" "+panels.get(cpt).toString());
+		if(cpt != panels.size()-1) {
 			f.setContentPane(panels.get(cpt));
 		} else {
 			f.setContentPane(new EndPanel());

@@ -1,4 +1,4 @@
-package ui;
+package ui.game;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -10,19 +10,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import bean.Question;
-import constants.Constants;
 import controller.FrameController;
 
 @SuppressWarnings(value = "serial")
 public class AbstractDisplayPanel extends JPanel {
 	
 	private Question question;
-	private JButton next, exit;
+	private JButton next;
 	private FrameController fc;
 	private JPanel top = new JPanel();
 	private JPanel bottom = new JPanel();
 	private JPanel left = new JPanel();
 	private JPanel right = new JPanel();
+	int topHeight;
+	int bottomHeight;
+	int leftHeight;
+	int rightHeight;
 
 	public AbstractDisplayPanel(Question question, FrameController fc) {
 		this.setQuestion(question);
@@ -30,45 +33,33 @@ public class AbstractDisplayPanel extends JPanel {
 		this.setLayout(new BorderLayout());
 		
 		// OFFSETS ; N S E W : 20%.
-		top.setPreferredSize(new Dimension(50, (int)(fc.getF().getHeight()*0.2)));
-		bottom.setPreferredSize(new Dimension(50, (int)(fc.getF().getHeight()*0.2)));
-		left.setPreferredSize(new Dimension((int)(fc.getF().getWidth()*0.2), 50));
-		right.setPreferredSize(new Dimension((int)(fc.getF().getWidth()*0.2), 50));
+		this.topHeight = (int)(fc.getF().getHeight()*0.2);
+		this.bottomHeight = (int)(fc.getF().getHeight()*0.2);
+		this.leftHeight = (int)(fc.getF().getHeight()*0.2);
+		this.rightHeight = (int)(fc.getF().getHeight()*0.2);
+		top.setPreferredSize(new Dimension(50, topHeight));
+		bottom.setPreferredSize(new Dimension(50, bottomHeight));
+		left.setPreferredSize(new Dimension(leftHeight, 50));
+		right.setPreferredSize(new Dimension(rightHeight, 50));
 		this.add(top, BorderLayout.NORTH);
 		this.add(bottom, BorderLayout.SOUTH);
 		this.add(left, BorderLayout.WEST);
 		this.add(right, BorderLayout.EAST);
 		
-		if(question!=null) {
-			this.add(createJTextArea(question.getName()), BorderLayout.CENTER);
-			next = new JButton("Suivant");
-			next.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					fc.nextPanel();
-				}
-			});
-			bottom.add(next);
-		} else {
-			this.add(createJTextArea(Constants.END_MSG), BorderLayout.CENTER);
-			exit = new JButton("Quitter");
-			exit.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					System.exit(0);
-				}
-			});
-			bottom.add(exit);
-		}
-	}
-	
-	private JTextArea createJTextArea(String s) {
-		JTextArea jl = new JTextArea();
+		JTextArea jl = new JTextArea(question.getName());
 		jl.setEditable(false);
 		jl.setOpaque(false);
 		jl.setLineWrap(true);
 		jl.setWrapStyleWord(true);
-		return jl;
+		this.add(jl, BorderLayout.CENTER);
+		next = new JButton("Suivant");
+		next.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				fc.nextPanel();
+			}
+		});
+		bottom.add(next);
 	}
 	
 	public Question getQuestion() {

@@ -1,4 +1,4 @@
-package ui;
+package ui.menu;
 
 import java.awt.Color;
 import java.awt.Dimension;

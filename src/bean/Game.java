@@ -10,13 +10,13 @@ import java.util.Iterator;
 import javax.swing.JFrame;
 
 import controller.FrameController;
-import ui.AbstractDisplayPanel;
-import ui.BlankPanel;
-import ui.DelayedQuestionPanel;
-import ui.EnumerePanel;
-import ui.JeuPanel;
-import ui.TuPreferesPanel;
-import ui.VirusPanel;
+import ui.game.AbstractDisplayPanel;
+import ui.game.BlankPanel;
+import ui.game.DelayedQuestionPanel;
+import ui.game.EnumerePanel;
+import ui.game.JeuPanel;
+import ui.game.TuPreferesPanel;
+import ui.game.VirusPanel;
 
 public class Game {
 

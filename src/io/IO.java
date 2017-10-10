@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -24,7 +26,7 @@ public class IO {
 				br = new BufferedReader(new FileReader(file.getPath()));
 				String sCurrentLine;
 				while ((sCurrentLine = br.readLine()) != null) {
-					// Test catégorie
+					// Cas ligne vide
 					if(sCurrentLine.trim().equals("")) {
 						continue;
 					}
@@ -44,6 +46,14 @@ public class IO {
 						selectedJoueurs.add(cloneJoueurs.get(r));
 						cloneJoueurs.remove(r);
 					}
+					
+//					Pattern p = Pattern.compile(".<[1-9]+>.");
+//					Matcher m = p.matcher(splitLine[0]);
+//					if(m.find()) {
+//						System.out.println(splitLine[0]+" is matching");
+//						splitLine[0] = splitLine[0].replace(m.group(0).trim(), getEffet(m.group(0).trim()));
+//					}
+					
 					boolean multipleText = false;
 					try {
 						multipleText = null != splitLine[2];
@@ -71,10 +81,18 @@ public class IO {
 				ex.printStackTrace();
 			}
 		}
-//		for (Question q : questionList) {
-//			System.out.println(q.toString());
-//		}
 	}
+	
+//	private String getEffet(String s) {
+//		switch (s) {
+//		case "<1>":
+//			String[] accents = {"allemand", "anglais", "chinois", "africain", "caille-ra", "du sud", "belge", "ch'ti"};
+//			return accents[((int)(Math.random()*accents.length))];
+//
+//		default:
+//			return "";
+//		}
+//	}
 
 	public ArrayList<Question> getQuestionList() {
 		return questionList;

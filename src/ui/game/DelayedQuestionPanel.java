@@ -1,5 +1,6 @@
-package ui;
+package ui.game;
 
+import bean.Question;
 import controller.FrameController;
 
 @SuppressWarnings("serial")
@@ -8,7 +9,7 @@ public class DelayedQuestionPanel extends AbstractDisplayPanel {
 	private String text;
 
 	public DelayedQuestionPanel(String text, FrameController fc) {
-		super(null, fc);
+		super(new Question(text, null, null), fc);
 		this.setText(text);
 	}
 	

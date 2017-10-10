@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
-import ui.NewGamePanel;
+import ui.menu.NewGamePanel;
 import bean.Joueur;
 
 public class Main {

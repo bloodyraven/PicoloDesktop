@@ -47,12 +47,11 @@ public class IO {
 						cloneJoueurs.remove(r);
 					}
 					
-//					Pattern p = Pattern.compile(".<[1-9]+>.");
-//					Matcher m = p.matcher(splitLine[0]);
-//					if(m.find()) {
-//						System.out.println(splitLine[0]+" is matching");
-//						splitLine[0] = splitLine[0].replace(m.group(0).trim(), getEffet(m.group(0).trim()));
-//					}
+					Pattern p = Pattern.compile("<[1-9]+>");
+					Matcher m = p.matcher(splitLine[0]);
+					if(m.find()) {
+						splitLine[0] = splitLine[0].replace(m.group(0).trim(), getEffet(m.group(0).trim()));
+					}
 					
 					boolean multipleText = false;
 					try {
@@ -83,16 +82,16 @@ public class IO {
 		}
 	}
 	
-//	private String getEffet(String s) {
-//		switch (s) {
-//		case "<1>":
-//			String[] accents = {"allemand", "anglais", "chinois", "africain", "caille-ra", "du sud", "belge", "ch'ti"};
-//			return accents[((int)(Math.random()*accents.length))];
-//
-//		default:
-//			return "";
-//		}
-//	}
+	private String getEffet(String s) {
+		switch (s) {
+		case "<1>":
+			String[] accents = {"allemand", "anglais", "chinois", "africain", "caille-ra", "du sud", "belge", "ch'ti"};
+			return accents[((int)(Math.random()*accents.length))];
+
+		default:
+			return "";
+		}
+	}
 
 	public ArrayList<Question> getQuestionList() {
 		return questionList;

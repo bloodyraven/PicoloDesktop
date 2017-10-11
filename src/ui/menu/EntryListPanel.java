@@ -56,6 +56,10 @@ public class EntryListPanel extends JPanel {
 						return;
 					}
 				}
+				if(listJoueur.size()==0) {
+					JOptionPane.showMessageDialog(f, Constants.MSG_NO_JOUEUR, "", JOptionPane.WARNING_MESSAGE);
+					return;
+				}
 				f.setContentPane(new FileSelectPanel(f, listJoueur));
 				f.repaint();
 				f.revalidate();

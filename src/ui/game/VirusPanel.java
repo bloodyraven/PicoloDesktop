@@ -1,15 +1,12 @@
 package ui.game;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridBagLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import controller.FrameController;
 import bean.Question;
+import controller.FrameController;
 
 @SuppressWarnings("serial")
 public class VirusPanel extends AbstractDisplayPanel {
@@ -20,11 +17,7 @@ public class VirusPanel extends AbstractDisplayPanel {
 		super(question, fc);
 		this.question=question;
 		JLabel jl = new JLabel("Virus");
-		jl.setPreferredSize(new Dimension(200, topHeight));
-		JPanel jp = new JPanel();
-		jp.setLayout(new GridBagLayout());
-		jp.add(jl);
-		jp.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		JPanel jp = labelAndPanelInit(jl);
 		this.add(jp, BorderLayout.NORTH);
 	}
 	

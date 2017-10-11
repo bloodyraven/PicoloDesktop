@@ -14,14 +14,14 @@ import bean.Joueur;
 public class Main {
 
 	public static void main(String[] args) {
-		//MOCK JOUEURS
+		//TODO remove MOCK JOUEURS
 		ArrayList<Joueur> joueurs = new ArrayList<Joueur>();
 		joueurs.add(new Joueur("Benoit"));
 		joueurs.add(new Joueur("Cancan"));
 		joueurs.add(new Joueur("Yann"));
 		joueurs.add(new Joueur("Brandon"));
 		
-		//MOCK FILES
+		//TODO remove MOCK FILES
 		ArrayList<File> files = new ArrayList<File>();
 		files.add(new File("resources/picolo_nom.txt"));
 		files.add(new File("resources/test.txt"));

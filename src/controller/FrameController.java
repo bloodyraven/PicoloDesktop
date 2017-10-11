@@ -20,11 +20,10 @@ public class FrameController {
 	}
 	
 	public void nextPanel() {
-		System.out.println("Panel : "+cpt+" "+panels.size()+" "+panels.get(cpt).toString());
 		if(cpt != panels.size()-1) {
 			f.setContentPane(panels.get(cpt));
 		} else {
-			f.setContentPane(new EndPanel());
+			f.setContentPane(new EndPanel(this));
 		}
 		cpt++;
 		f.repaint();

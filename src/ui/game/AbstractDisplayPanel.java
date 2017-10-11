@@ -1,11 +1,16 @@
 package ui.game;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -26,6 +31,8 @@ public class AbstractDisplayPanel extends JPanel {
 	int bottomHeight;
 	int leftHeight;
 	int rightHeight;
+	public final static int fontSize = 32;
+	public final static int fontSizeText = 20;
 
 	public AbstractDisplayPanel(Question question, FrameController fc) {
 		this.setQuestion(question);
@@ -47,10 +54,12 @@ public class AbstractDisplayPanel extends JPanel {
 		this.add(right, BorderLayout.EAST);
 		
 		JTextArea jl = new JTextArea(question.getName());
+		jl.setFont(new Font("Arial", Font.PLAIN, fontSizeText));
 		jl.setEditable(false);
 		jl.setOpaque(false);
 		jl.setLineWrap(true);
 		jl.setWrapStyleWord(true);
+		jl.setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.add(jl, BorderLayout.CENTER);
 		next = new JButton("Suivant");
 		next.addActionListener(new ActionListener() {
@@ -60,6 +69,16 @@ public class AbstractDisplayPanel extends JPanel {
 			}
 		});
 		bottom.add(next);
+	}
+	
+	JPanel labelAndPanelInit(JLabel jl) {
+		jl.setFont(new Font("Arial", Font.PLAIN, fontSize));
+		jl.setPreferredSize(new Dimension(200, topHeight));
+		JPanel jp = new JPanel();
+		jp.setLayout(new GridBagLayout());
+		jp.add(jl);
+		jp.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		return jp;
 	}
 	
 	public Question getQuestion() {

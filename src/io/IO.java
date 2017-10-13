@@ -8,8 +8,11 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
+
 import org.apache.commons.lang.StringUtils;
 
+import constants.Constants;
 import bean.Joueur;
 import bean.Question;
 
@@ -21,16 +24,18 @@ public class IO {
 		questionList = new ArrayList<Question>();
 		String actualCategory = "";
 		BufferedReader br = null;
+		String sCurrentLine = "";
+		File currentFile = null;
 		try {
 			for (File file : fileList) {
+				currentFile = file;
 				br = new BufferedReader(new FileReader(file.getPath()));
-				String sCurrentLine;
 				while ((sCurrentLine = br.readLine()) != null) {
 					// Cas ligne vide
 					if(sCurrentLine.trim().equals("")) {
 						continue;
 					}
-					if(sCurrentLine.contains("#")) {
+					if(sCurrentLine.substring(0,1).equals("#")) {
 						actualCategory = sCurrentLine.replace("#", "");
 						continue;
 					}
@@ -71,6 +76,8 @@ public class IO {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, Constants.MSG_CORRUPTED_FILE+currentFile.getName(), "", JOptionPane.WARNING_MESSAGE);
 		} finally {
 			try {
 				if (br != null)

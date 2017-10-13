@@ -9,6 +9,7 @@ import java.util.Iterator;
 
 import javax.swing.JFrame;
 
+import constants.Constants;
 import controller.FrameController;
 import ui.game.AbstractDisplayPanel;
 import ui.game.BlankPanel;
@@ -25,13 +26,17 @@ public class Game {
 	private ArrayList<AbstractDisplayPanel> listPanels;
 	private FrameController fc;
 	
+	private ArrayList<Question> blankQuestions;
+	private ArrayList<Question> virusQuestions;
+	private ArrayList<Question> enumereQuestions;
+	private ArrayList<Question> jeuQuestions;
+	private ArrayList<Question> prefereQuestions;
+	
 	public Game(JFrame f, ArrayList<Joueur> joueurList, ArrayList<File> fileList) {
 		this.joueurList=joueurList;
 		this.f=f;
 		setListPanels(new ArrayList<AbstractDisplayPanel>());
 		//LOAD ALL QUESTIONS
-		fileList.add(new File("resources/picolo_nom.txt"));
-		fileList.add(new File("resources/test.txt"));
 		IO io = new IO(joueurList, fileList);
 		//SET FIRST LAYOUT
 		fc = new FrameController(f, listPanels);
@@ -43,8 +48,12 @@ public class Game {
 	
 	private void generatePanelList(ArrayList<Question> questionList) {
 		Collections.shuffle(questionList);
+		int nb = Constants.NB_TURNS;
+		if(questionList.size() < Constants.NB_TURNS) {
+			nb = questionList.size();
+		}
 		ArrayList<Question> delayedQuestions = new ArrayList<Question>();
-		for (int i = 0 ; i < 10 ; i++) {
+		for (int i = 0 ; i < nb ; i++) {
 			Iterator<Question> it = delayedQuestions.iterator();
 			while (it.hasNext()) {
 				Question question=it.next();
@@ -66,10 +75,6 @@ public class Game {
 			for (Question question : delayedQuestions) {
 				listPanels.add(new DelayedQuestionPanel(question.getName2(), fc));
 			}
-		}
-		int cpt = 0;
-		for (AbstractDisplayPanel abstractDisplayPanel : listPanels) {
-			System.out.println(cpt++ +" "+abstractDisplayPanel.toString());
 		}
 	}
 	
@@ -107,6 +112,53 @@ public class Game {
 	public void setListPanels(ArrayList<AbstractDisplayPanel> listPanels) {
 		this.listPanels = listPanels;
 	}
-	
+
+	public FrameController getFc() {
+		return fc;
+	}
+
+	public void setFc(FrameController fc) {
+		this.fc = fc;
+	}
+
+	public ArrayList<Question> getBlankQuestions() {
+		return blankQuestions;
+	}
+
+	public void setBlankQuestions(ArrayList<Question> blankQuestions) {
+		this.blankQuestions = blankQuestions;
+	}
+
+	public ArrayList<Question> getVirusQuestions() {
+		return virusQuestions;
+	}
+
+	public void setVirusQuestions(ArrayList<Question> virusQuestions) {
+		this.virusQuestions = virusQuestions;
+	}
+
+	public ArrayList<Question> getEnumereQuestions() {
+		return enumereQuestions;
+	}
+
+	public void setEnumereQuestions(ArrayList<Question> enumereQuestions) {
+		this.enumereQuestions = enumereQuestions;
+	}
+
+	public ArrayList<Question> getJeuQuestions() {
+		return jeuQuestions;
+	}
+
+	public void setJeuQuestions(ArrayList<Question> jeuQuestions) {
+		this.jeuQuestions = jeuQuestions;
+	}
+
+	public ArrayList<Question> getPrefereQuestions() {
+		return prefereQuestions;
+	}
+
+	public void setPrefereQuestions(ArrayList<Question> prefereQuestions) {
+		this.prefereQuestions = prefereQuestions;
+	}
 	
 }
